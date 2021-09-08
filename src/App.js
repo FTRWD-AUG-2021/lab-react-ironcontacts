@@ -18,6 +18,19 @@ function App() {
     // if actor is there, we do not push.
   }
 
+  function sortNameContact() {
+    let copyOfActors = [...actors];
+    copyOfActors.sort((a, b) => {
+       return (a.name).localeCompare(b.name) 
+    })
+    setActors(copyOfActors);
+
+    copyOfActors.sort()
+  }
+
+
+  
+
   const ShowTable = () => {
     let list = actors.map((actor) => {
       return (
@@ -35,7 +48,10 @@ function App() {
 
   return (
     <div className="App">
+      <h1>IronContacts</h1>
       <button onClick={randomContact}>Add Random Contact</button>
+      <button onClick={sortNameContact}>Sort by name</button>
+      <button onClick={randomContact}>Sort by popularity</button>
       <table>
         <tr>
           <th>Picture</th>
