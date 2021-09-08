@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import contacts from './contacts.json';
+import ShowTable from './ShowTable.js';
 import { useState } from 'react';
 
 function App() {
@@ -41,29 +42,11 @@ function App() {
 		setActors(copyOfActors);
 	};
 
-	const ShowTable = () => {
-		let list = actors.map((actor) => {
-			return (
-				<tr>
-					<td>
-						<img src={actor.pictureUrl} height="50px" />
-					</td>
-					<td>{actor.name}</td>
-					<td>{actor.popularity}</td>
-					<td>
-						<button onClick={deleteActor}>Delete</button>
-					</td>
-				</tr>
-			);
-		});
-		return list;
-	};
-
 	return (
 		<div className="App">
 			<h1>IronContacts</h1>
-			<button onClick={randomContact}>Add Random Contact</button>
-			<button onClick={sortNameContact}>Sort by name</button>
+			<button onClick={randomContact}>Add Random Contact</button> &nbsp;
+			<button onClick={sortNameContact}>Sort by name</button> &nbsp;
 			<button onClick={sortByPopularity}>Sort by popularity</button>
 			<table>
 				<tr>
@@ -72,7 +55,7 @@ function App() {
 					<th>Popularity</th>
 					<th>Action</th>
 				</tr>
-				<ShowTable />
+				<ShowTable actors={actors} deleteActor={deleteActor} />
 			</table>
 		</div>
 	);
